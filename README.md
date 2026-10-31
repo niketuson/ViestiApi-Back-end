@@ -9,10 +9,10 @@
      
 2. Middleware <sup>Pyyntöjen tarkistukset ja tunnistautuminen</sup>
    - ***ApiKeyMiddleware.cs*** Tarkistaa API-avaimen; Jos API-avain puuttuu tai on virheellinen, sovellus palauttaa virheen. Jos API-avain on oikea, pyyntö pääsee etenemään.
-   - ***BasicAuthenticationHandler.cs*** Käsittelee käyttäjän tunnistautumisen käyttäjätunnuksella ja salasanalla
+   - ***BasicAuthenticationHandler.cs*** _Käsittelee käyttäjän tunnistautumisen käyttäjätunnuksella ja salasanalla_
    - ***UserAuthenticationService.cs*** Tarkistaa käyttäjän salasanan ja käyttäjien oikeudet
 4. Models <sup>Tietomallit ja tietokantayhteys</sup>
-   - ***User.cs*** Määrittelee mitä tietoja käyttäjästä tallennetaan: Id, Username, Password, Lastname, Joindate, Lastlogin, Salt,
+   - ***User.cs*** Määrittelee mitä tietoja käyttäjästä tallennetaan: Id, Username, Password, Firstname Lastname, Joindate, Lastlogin, Salt,
    - ***Message.cs*** Sovelluksessa lähetettävä viesti. Sisältää: Id, Title, Body, Sender, Receiver, PrevMessage, SendTime
      - ***MessageDTO*** Määrittelee millaisessa muodossa viestin tiedot siirretään sovelluksen ja käyttäjän välillä.
    - ***MessageContext.cs*** Määrittelee mitä tietokannan taulua käytetään
@@ -27,8 +27,8 @@
    - ***UserService.cs*** Huolehtii käyttäjien luomiseen ja käsittelyyn liittyvästä logiikasta. Tarkistaa onko käyttäjänimi jo käytössä, asettaa käyttäjän liittymispäivän ja huolehtii uuden käyttäjän salasanan käsittelystä.
    - ***IUserService.cs*** Määrittelee mitä käyttäjien käsittelyyn liittyviä toimintoja muut sovelluksen osat voivat käyttää.
 9. Migrations <sup>Tietokannan rakenteen muutokset</sup>   
-   - Migrations kansio siältää tiedostot joiden avulla tietokannan rakennetta voidaan luoda ja muuttaa sovelluksen kehityksen aikana.
-     - ***IntialCreate*** Luo tietokannan alkuperäisen rakenteen. Se sisältää Users ja Messages taulut.
+   - Migrations kansio sisältää tiedostot joiden avulla tietokannan rakennetta voidaan luoda ja muuttaa sovelluksen kehityksen aikana.
+     - ***InitialCreate*** Luo tietokannan alkuperäisen rakenteen. Se sisältää Users ja Messages taulut.
      - ***AddSalt*** Lisää Users tauluun uuden Salt sarakkeen jota käytetään salasanojen turvaamisessa. 
 ## Rajapinnat
 ViestiApi tarjoaa käyttäjien ja viestien hallintaan tarkoitetun HTTP-rajapinnan, jonka avulla voi luoda käyttäjätilejä, kirjautua sisään, lähettää, hakea ja hallita viestejä.  
@@ -44,7 +44,20 @@ Rajapinta käyttää seuraavia HTTP metodeja:
 
 
 ## Sovelluksen käyttö
+ViestiApi sovellusta käytetään HTTP-pyyntöjen avulla. Pyyntöjen lähettämiseen voidaan käyttää Postman ohjelmaa.
+Jokaisen pyynnön mukana tulee lähettää sovelluksen API-avain.  
+
+Esimerkki käyttäjätilin luomisesta Postmanilla:  
+
+1. Lähetä **POST** pyyntö osoitteeseen POST /api/Users  
+   {  
+      "userName": "testuser",  
+      "password": "salasana123",  
+      "firstName": "Testi",  
+      "lastName": "Käyttäjä"  
+   }  
+
+   Kun käyttäjätili on luotu, voit tunnistautua sovellukseen käyttämällä käyttäjätunnusta ja salasanaa HTTP-pyyntöjen yhteydessä. ks [BasicAuthenticationHandler.cs](#sovelluksen-rakenne)
 
 
-## Viestin lähetys
 
