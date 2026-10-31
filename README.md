@@ -31,6 +31,16 @@
      - ***IntialCreate*** Luo tietokannan alkuperäisen rakenteen. Se sisältää Users ja Messages taulut.
      - ***AddSalt*** Lisää Users tauluun uuden Salt sarakkeen jota käytetään salasanojen turvaamisessa. 
 ## Rajapinnat
+ViestiApi tarjoaa käyttäjien ja viestien hallintaan tarkoitetun HTTP-rajapinnan, jonka avulla voi luoda käyttäjätilejä, kirjautua sisään, lähettää, hakea ja hallita viestejä.  
+Rajapinta on jaettu kahteen osaan: *Users* ja *Messages*.
+   - *Users* rajapinta mahdollistaa käyttäjien hallinnan.
+   - *Messages* rajapinta mahdollistaa viestien käsittelyn.
+      
+Rajapinta käyttää seuraavia HTTP metodeja:
+   - **GET** tietojen hakeminen
+   - **POST** uusien tietojen luominen
+   - **PUT** olemassa olevien tietojen päivittäminen
+   - **DELETE** tietojen poistaminen
 
 
 ## Sovelluksen käyttö
