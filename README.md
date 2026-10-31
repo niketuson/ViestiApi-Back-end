@@ -59,5 +59,14 @@ Esimerkki käyttäjätilin luomisesta Postmanilla:
 
    Kun käyttäjätili on luotu, voit tunnistautua sovellukseen käyttämällä käyttäjätunnusta ja salasanaa HTTP-pyyntöjen yhteydessä. ks [BasicAuthenticationHandler.cs](#sovelluksen-rakenne)
 
+   Kun käyttäjä on tunnistettu, pystyt käyttämään viestien lähettämiseen, hakemiseen ja päivittämiseen tarkoitettuja toimintoja.
+   Esimerkiksi uuden viestin lähettäminen tapahtuu **POST** pyynnöllä osoitteeseen */api/Messages*
+   
+   {  
+   "title": "Otsikko",  
+   "body": "Tässä on viestisi",  
+   "senderID": "testuser",  
+   "receiverID": "testuser2"  
+   }  
 
 
