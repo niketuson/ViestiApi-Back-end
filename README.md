@@ -70,3 +70,5 @@ Esimerkki käyttäjätilin luomisesta Postmanilla:
    }  
 
 
+> [!Note]
+> Tekoälyä käytetty ohjelman toimintalogiikan ymmärtämiseen
